@@ -124,89 +124,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5374119116162701857, guid: c4c73d977f4f31a41aff5cf08ab94d40, type: 3}
   m_PrefabInstance: {fileID: 3291342673672740021}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &250266407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 250266408}
-  - component: {fileID: 250266410}
-  - component: {fileID: 250266409}
-  m_Layer: 0
-  m_Name: TriggerEnter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &250266408
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250266407}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 266939769}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &250266409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250266407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da445585c4bf9014cb317bb410f5c58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::S_CowCapture
-  captured: 0
-  canCapture: 0
---- !u!58 &250266410
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250266407}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1
 --- !u!1 &266939762
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +138,7 @@ GameObject:
   - component: {fileID: 266939766}
   - component: {fileID: 266939771}
   - component: {fileID: 266939765}
+  - component: {fileID: 266939772}
   - component: {fileID: 266939763}
   - component: {fileID: 266939764}
   - component: {fileID: 266939770}
@@ -290,7 +208,7 @@ MonoBehaviour:
   targetToAttack: {fileID: 0}
   player: {fileID: 214137251}
   mouse: {fileID: 712254571}
-  cowCapute: {fileID: 250266409}
+  cowCapute: {fileID: 0}
 --- !u!58 &266939766
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -426,7 +344,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1541161907}
-  - {fileID: 250266408}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &266939770
@@ -535,10 +452,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 266939762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c18e2f191bca6d45b51b0b774be7d93, type: 3}
+  m_Script: {fileID: 11500000, guid: 9393a902c41bdf843ad669583d3df25d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCow
+  m_EditorClassIdentifier: Assembly-CSharp::FriendCow
   Stats: {fileID: 0}
+--- !u!114 &266939772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266939762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da445585c4bf9014cb317bb410f5c58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::S_CowCapture
+  captured: 0
+  canCapture: 0
 --- !u!1001 &451277674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -838,6 +769,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9c82b121b96014c95666da4211bf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_MouseClickEvent
+--- !u!1 &843253649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 632035052095798079, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
+  m_PrefabInstance: {fileID: 3200741381207681276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &843253653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843253649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edcffd5b7b0509944a4fa54d6bc5d5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::S_CowAttack
 --- !u!1 &1058908312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3562752999165339207, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
@@ -1192,8 +1140,7 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1477506170851564624, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5119919604575986345, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
     m_AddedGameObjects: []
@@ -1207,6 +1154,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3562752999165339207, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1058908313}
+    - targetCorrespondingSourceObject: {fileID: 632035052095798079, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 843253653}
   m_SourcePrefab: {fileID: 100100000, guid: 02eeb592bd95e1242a3187dbf7026a24, type: 3}
 --- !u!1001 &3291342673672740021
 PrefabInstance:
