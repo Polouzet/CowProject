@@ -1,29 +1,31 @@
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class S_Detection : MonoBehaviour
+public class S_Detection : S_CowComponent
 {
     public bool inRange = false;
-    [HideInInspector] public List<S_Stats> targets;
-        public List<GameObject> vavaches = new List<GameObject>();
+    public HashSet<S_CowBase> vavaches = new();
     public GameObject targetToAttack;
-
     void Start()
     {
-        targets = new List<S_Stats>();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+
+        var cowBase = collision.gameObject.GetComponent<S_CowBase>();
+
+        if (cowBase != null)
         {
-            if (!targets.Contains(collision.gameObject.GetComponent<S_Stats>()))
+            if (cowBase == parent)
+                return;
+
+            if (cowBase.Stats == null)
             {
-            inRange = true;
-            vavaches.Add(collision.gameObject);
-            targets.Add(collision.gameObject.GetComponent<S_Stats>());  
+                print("PAS DE STATS!!!!!!!!!!!!!!");
+                return;
             }
-            targetToAttack = collision.gameObject;
+            vavaches.Add(cowBase);
         }
     }
     

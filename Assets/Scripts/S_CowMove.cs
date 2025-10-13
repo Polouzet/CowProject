@@ -2,16 +2,19 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class S_CowMove : MonoBehaviour
+public class S_CowMove : S_CowComponent
 {
     Rigidbody2D rb;
     SpriteRenderer sprite;
     public Animator animator;
+
     public float speed;
     public float followDistance;
-    bool inMovement = false;
+    private bool inMovement = false;
+
     public GameObject target;
     public GameObject targetToAttack;
+
     public GameObject player;
     public S_MouseClickEvent mouse;
     public S_CowCapture cowCapute;

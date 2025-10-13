@@ -6,7 +6,7 @@ public class S_Ennemies : MonoBehaviour
 {
     float speed = 2f;
     S_Detection detection;
-
+    
     public float followDistance;
     public Animator animator;
     bool inMovement = false;
@@ -18,7 +18,7 @@ public class S_Ennemies : MonoBehaviour
 
     void Update()
     {
-            if (inMovement)
+        if (inMovement)
         {
             animator.SetBool("Walking", true);
         }

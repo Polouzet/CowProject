@@ -1,16 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class S_EnnemiesAttack : MonoBehaviour
+public class S_EnnemiesAttack : S_EnemyComponent
 {
-    S_Stats stats;
     bool canAttack = false;
     bool attackEnd = true;
     S_Stats targetStats;
     AudioSource sound;
     void Start()
     {
-        stats = GetComponentInParent<S_Stats>();
         sound = GetComponentInParent<AudioSource>();
     }
     void OnTriggerEnter2D(Collider2D collision)
