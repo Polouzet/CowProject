@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class S_CowCapture : MonoBehaviour
+public class S_CowCapture : S_CowComponent
 {
     public bool captured = false;
     public bool canCapture = false;
@@ -8,12 +8,10 @@ public class S_CowCapture : MonoBehaviour
     {
         if (collision.tag == "Player" && captured == false)
         {
-            canCapture = true;
+            gameObject.GetComponent<FriendCow>().captureComponent.captured = true;
+            gameObject.tag = "Player";
+            parent.baseTarget = collision.gameObject;
+            parent.NewTarget();
         }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-            canCapture = false;        
     }
 }

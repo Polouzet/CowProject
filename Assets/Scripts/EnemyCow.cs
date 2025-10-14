@@ -4,7 +4,7 @@ using System.Linq;
 
 public class EnemyCow : S_CowBase
 {
-    S_CowMove movementComponent;
+    S_MovementCow movementComponent;
     S_Detection detectionComponent;
     S_CowAttack attackComponenent;
 
@@ -12,7 +12,7 @@ public class EnemyCow : S_CowBase
     {
         base.Start();
 
-        movementComponent = GetComponent<S_CowMove>();
+        movementComponent = GetComponent<S_MovementCow>();
         detectionComponent = GetComponent<S_Detection>();
     }
 
@@ -25,12 +25,12 @@ public class EnemyCow : S_CowBase
             if (detectionComponent.vavaches.Count > 0)
             {
                 var cows = detectionComponent.vavaches.OrderByDescending(cow => cow.Stats.tauntValue);
-                print(cows.Count());
 
                 var highestTaunter = cows.First();
                 if (highestTaunter != null)
                 {
-                    movementComponent.target = highestTaunter.gameObject;
+                    baseTarget = highestTaunter.gameObject;
+                    NewTarget();
                 }
             }
 

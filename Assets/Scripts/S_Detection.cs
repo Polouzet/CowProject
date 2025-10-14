@@ -7,8 +7,9 @@ public class S_Detection : S_CowComponent
     public bool inRange = false;
     public HashSet<S_CowBase> vavaches = new();
     public GameObject targetToAttack;
-    void Start()
+    protected override void Start()
     {
+
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +28,7 @@ public class S_Detection : S_CowComponent
             }
             vavaches.Add(cowBase);
         }
+
     }
     
 }

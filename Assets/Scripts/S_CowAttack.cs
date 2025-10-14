@@ -1,27 +1,25 @@
 using UnityEngine;
 using System.Collections;
-public class S_CowAttack : MonoBehaviour
+public class S_CowAttack : S_CowComponent
 {
-  S_Stats stats;
     bool canAttack = false;
     bool attackEnd = true;
-    S_Stats targetStats;
     AudioSource sound;
-    void Start()
+    GameObject target;
+    protected override void Start()
     {
-        stats = GetComponentInParent<S_Stats>();
+        base.Start();
+
         sound = GetComponentInParent<AudioSource>();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ennemies")
         {
-            
+            target = collision.gameObject;
             canAttack = true;
-            targetStats = collision.gameObject.GetComponent<S_Stats>();
             if (attackEnd)
             {
-            TauntUp();
             Attack();                
             }
 
@@ -35,25 +33,26 @@ public class S_CowAttack : MonoBehaviour
     {
         if (canAttack)
         {
-        attackEnd = false;
-        StartCoroutine(AttackTimer()); 
-        AttackTimer();               
+            StartCoroutine(AttackTimer());
+            TauntUp();
+            AttackTimer();               
         }
     }
 
     IEnumerator AttackTimer()
     {
-        targetStats.life = targetStats.life - stats.dmg;
-        targetStats.LifeUpdate();
+        target.GetComponent<S_Stats>().life = target.GetComponent<S_Stats>().life - parent.Stats.dmg;
+        target.GetComponent<S_Stats>().LifeUpdate();
+
         sound.Play();
-        yield return new WaitForSeconds(stats.attackSpeed);
+
+        yield return new WaitForSeconds(parent.Stats.attackSpeed);
         Attack();
-        attackEnd = true;
     }
 
     public void TauntUp()
     {
-        stats.tauntValue = stats.tauntValue + Random.Range(1, 5);
-        print(stats.tauntValue);
+        parent.Stats.tauntValue = parent.Stats.tauntValue + Random.Range(1, 5);
+        print(parent.Stats.tauntValue);
     }
 }

@@ -30,11 +30,7 @@ public class S_CowMove : S_CowComponent
     // Update is called once per frame
     void Update()
     {
-        if (mouse.targetToAttack != null)
-        {
-            targetToAttack = mouse.targetToAttack;
-            ChangeTarget();            
-        }
+
 
         if (target == null)
         {
