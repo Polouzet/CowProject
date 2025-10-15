@@ -2,52 +2,77 @@ using UnityEngine;
 using System.Collections;
 public class S_CowAttack : S_CowComponent
 {
-    bool canAttack = false;
-    bool attackEnd = true;
+    public bool canAttack = false;
+    public bool attackRange = false;
+    public float attackCooldown;
     AudioSource sound;
-    GameObject target;
     protected override void Start()
     {
         base.Start();
 
+        attackCooldown = parent.Stats.attackSpeed;
         sound = GetComponentInParent<AudioSource>();
+
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.tag == "Ennemies")
+
+        if (parent.baseTarget!= null)
         {
-            target = collision.gameObject;
-            canAttack = true;
-            if (attackEnd)
+            if (parent.target)
             {
-            Attack();                
+                if (attackRange && canAttack)
+                {
+                    Attack();
+                }
             }
-
         }
-    }
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        canAttack = false;
-    }
-     void Attack()
-    {
-        if (canAttack)
+        if(!canAttack)
         {
-            StartCoroutine(AttackTimer());
-            TauntUp();
-            AttackTimer();               
+            AttackReset();
         }
     }
-
-    IEnumerator AttackTimer()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        target.GetComponent<S_Stats>().life = target.GetComponent<S_Stats>().life - parent.Stats.dmg;
-        target.GetComponent<S_Stats>().LifeUpdate();
+        if(collision.gameObject.GetComponent<S_CowBase>())
+        {
+            attackRange = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<S_CowBase>())
+        {
+            attackRange = false;
+        }
+    }
+    void Attack()
+    {
+        if (parent.target.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+        else
+            canAttack = false;
+        TauntUp();
+
+        parent.target.GetComponent<S_Stats>().life = parent.target.GetComponent<S_Stats>().life - parent.Stats.dmg;
+        // parent.target.gameObject.GetComponent<Rigidbody2D>().AddForce(parent.gameObject.transform.up * parent.Stats.pushForce,ForceMode2D.Impulse) ;
+        parent.target.GetComponent<S_Stats>().LifeUpdate();
 
         sound.Play();
+    }
 
-        yield return new WaitForSeconds(parent.Stats.attackSpeed);
-        Attack();
+    void AttackReset()
+    {
+
+        attackCooldown -= Time.deltaTime;
+        if (attackCooldown <= 0)
+        {
+            attackCooldown = parent.Stats.attackSpeed;
+            canAttack = true;
+        }
+
     }
 
     public void TauntUp()

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class S_Detection : S_CowComponent
 {
-    public bool inRange = false;
     public HashSet<S_CowBase> vavaches = new();
-    public GameObject targetToAttack;
     protected override void Start()
     {
 
@@ -27,6 +25,7 @@ public class S_Detection : S_CowComponent
                 return;
             }
             vavaches.Add(cowBase);
+            
         }
 
     }

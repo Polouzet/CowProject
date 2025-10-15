@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class FriendCow : S_CowBase
 {
-    S_MovementCow movementComponent;
-    S_CowAttack attackComponenent;
     public S_CowCapture captureComponent;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
 
-        movementComponent = GetComponent<S_MovementCow>();
+
         captureComponent = GetComponent<S_CowCapture>();
 
     }
