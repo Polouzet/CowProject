@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class S_Detection : S_CowComponent
@@ -7,7 +8,7 @@ public class S_Detection : S_CowComponent
     public HashSet<S_CowBase> vavaches = new();
     protected override void Start()
     {
-
+        base.Start();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,7 +26,8 @@ public class S_Detection : S_CowComponent
                 return;
             }
             vavaches.Add(cowBase);
-            
+            var top = vavaches.OrderByDescending(c => c.Stats.tauntValue).First();
+            parent.baseTarget = top.gameObject;
         }
 
     }

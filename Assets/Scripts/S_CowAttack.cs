@@ -17,10 +17,11 @@ public class S_CowAttack : S_CowComponent
     private void Update()
     {
 
-        if (parent.baseTarget!= null)
+        if (parent.target!= null)
         {
             if (parent.target)
             {
+
                 if (attackRange && canAttack)
                 {
                     Attack();
@@ -57,7 +58,7 @@ public class S_CowAttack : S_CowComponent
         TauntUp();
 
         parent.target.GetComponent<S_Stats>().life = parent.target.GetComponent<S_Stats>().life - parent.Stats.dmg;
-        // parent.target.gameObject.GetComponent<Rigidbody2D>().AddForce(parent.gameObject.transform.up * parent.Stats.pushForce,ForceMode2D.Impulse) ;
+       // parent.target.gameObject.GetComponent<Rigidbody2D>().AddForce(parent.gameObject.transform.up * parent.Stats.pushForce,ForceMode2D.Impulse) ;
         parent.target.GetComponent<S_Stats>().LifeUpdate();
 
         sound.Play();
