@@ -1,11 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
-public class S_CowAttack : S_CowComponent
+
+public class CowAttack : S_CowComponent
 {
     public bool canAttack = false;
-    public bool attackRange = false;
+
     public float attackCooldown;
     AudioSource sound;
+
     protected override void Start()
     {
         base.Start();
@@ -14,37 +16,23 @@ public class S_CowAttack : S_CowComponent
         sound = GetComponentInParent<AudioSource>();
 
     }
+
     private void Update()
     {
 
-        if (parent.target!= null)
+        if (parent.target != null)
         {
             if (parent.target)
             {
-
-                if (attackRange && canAttack)
+                if (canAttack)
                 {
                     Attack();
                 }
             }
         }
-        if(!canAttack)
+        if (!canAttack)
         {
             AttackReset();
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.GetComponent<S_CowBase>())
-        {
-            attackRange = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<S_CowBase>())
-        {
-            attackRange = false;
         }
     }
     void Attack()
@@ -55,10 +43,8 @@ public class S_CowAttack : S_CowComponent
         }
         else
             canAttack = false;
-        TauntUp();
 
         parent.target.GetComponent<S_Stats>().life = parent.target.GetComponent<S_Stats>().life - parent.Stats.dmg;
-       // parent.target.gameObject.GetComponent<Rigidbody2D>().AddForce(parent.gameObject.transform.up * parent.Stats.pushForce,ForceMode2D.Impulse) ;
         parent.target.GetComponent<S_Stats>().LifeUpdate();
 
         sound.Play();
@@ -68,17 +54,12 @@ public class S_CowAttack : S_CowComponent
     {
 
         attackCooldown -= Time.deltaTime;
+
         if (attackCooldown <= 0)
         {
             attackCooldown = parent.Stats.attackSpeed;
             canAttack = true;
         }
 
-    }
-
-    public void TauntUp()
-    {
-        parent.Stats.tauntValue = parent.Stats.tauntValue + Random.Range(1, 5);
-        print(parent.Stats.tauntValue);
     }
 }

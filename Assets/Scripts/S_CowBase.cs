@@ -7,17 +7,19 @@ public class S_CowBase : MonoBehaviour
 {
     public static List<S_CowBase> Cows = new();
 
-    public S_CowAttack attackComponenent;
-    public S_MovementCow movementComponent;
+    public CowAttack attackComponenent;
+    public CowMove movementComponent;
 
     public S_Stats Stats;
     public GameObject target;
     public GameObject baseTarget;
 
+    public Action<S_CowBase> death;
+
     public virtual void Awake()
     {
-        attackComponenent = GetComponent<S_CowAttack>();
-        movementComponent = GetComponent<S_MovementCow>();
+        attackComponenent = GetComponent<CowAttack>();
+        movementComponent = GetComponent<CowMove>();
 
         Stats = gameObject.GetComponent<S_Stats>();
 

@@ -48,11 +48,12 @@ public class CowMove : S_CowComponent
             if (Vector2.Distance(transform.position, parent.target.transform.position) > followDistance && cowCapute.captured)
             {
                 var dir = parent.target.transform;
-                cowRB.linearVelocity = Vector2.MoveTowards(transform.position, parent.target.transform.position, parent.Stats.speed * Time.deltaTime);
+                cowRB.transform.position = Vector2.MoveTowards(transform.position, parent.target.transform.position, parent.Stats.speed * Time.deltaTime);
                 inMovement = true;
             }
+            else
+                inMovement = false;
         }
-        else
-            inMovement = false;
+
     }
 }

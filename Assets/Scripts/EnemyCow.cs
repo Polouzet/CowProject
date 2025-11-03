@@ -1,5 +1,5 @@
 
-
+using UnityEngine;
 using System.Linq;
 
 public class EnemyCow : S_CowBase

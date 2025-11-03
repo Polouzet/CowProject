@@ -9,9 +9,11 @@ public class S_CowCapture : S_CowComponent
         if (collision.tag == "Player" && captured == false)
         {
             gameObject.GetComponent<FriendCow>().captureComponent.captured = true;
-            gameObject.tag = "Player";
             parent.baseTarget = collision.gameObject;
             parent.NewTarget();
+
+            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+            player.myCows.Add(parent);
         }
     }
 }
