@@ -8,8 +8,9 @@ public class CowMove : S_CowComponent
     float horizontal;
     float vertical;
 
-    private bool inMovement = false;
+    public bool inMovement = false;
     public float followDistance;
+    public bool canMove;
 
     public Animator animator;
     public S_CowCapture cowCapute;
@@ -27,13 +28,21 @@ public class CowMove : S_CowComponent
 
     void Update()
     {
-        cowRB.linearVelocity = new Vector2(horizontal * parent.Stats.speed, vertical * parent.Stats.speed);
+        cowRB.linearVelocity = new Vector2(horizontal, vertical) * parent.Stats.speed;
 
         if (parent.target == null)
         {
             parent.target = parent.baseTarget;
         }
 
+        if (horizontal <= 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (horizontal >= 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
         if (inMovement)
         {
             animator.SetBool("Walking", true);
@@ -45,7 +54,7 @@ public class CowMove : S_CowComponent
         if (parent.target != null)
         {
 
-            if (Vector2.Distance(transform.position, parent.target.transform.position) > followDistance && cowCapute.captured)
+            if (Vector2.Distance(transform.position, parent.target.transform.position) > followDistance  && canMove)
             {
                 var dir = parent.target.transform;
                 cowRB.transform.position = Vector2.MoveTowards(transform.position, parent.target.transform.position, parent.Stats.speed * Time.deltaTime);

@@ -6,10 +6,8 @@ public class S_Stats : S_CowComponent
     public float dmg;
     public float speed;
     public float attackRange;
-    public float pushForce;
-    public int tauntValue;
     public float attackSpeed;
-
+    public float tauntValue;
     public GameObject deathparticleprefab;
 
     public void LifeUpdate()

@@ -4,6 +4,7 @@ using UnityEngine;
 public class CowAttack : S_CowComponent
 {
     public bool canAttack = false;
+    public bool inRange =false;
 
     public float attackCooldown;
     AudioSource sound;
@@ -19,22 +20,31 @@ public class CowAttack : S_CowComponent
 
     private void Update()
     {
-
-        if (parent.target != null)
+        if(parent.target)
         {
-            if (parent.target)
+            if (Vector2.Distance(transform.position, parent.target.transform.position) <= parent.Stats.attackRange)
             {
-                if (canAttack)
+                inRange = true;
+
+                if (canAttack && inRange)
                 {
                     Attack();
                 }
+                parent.movementComponent.canMove = false;
+
             }
+            else
+
+                parent.movementComponent.canMove = true;
+                inRange = false;
         }
+
         if (!canAttack)
         {
             AttackReset();
         }
     }
+
     void Attack()
     {
         if (parent.target.gameObject.CompareTag("Player"))
@@ -42,14 +52,15 @@ public class CowAttack : S_CowComponent
             return;
         }
         else
-            canAttack = false;
 
+        canAttack = false;
+        inRange = true;
         parent.target.GetComponent<S_Stats>().life = parent.target.GetComponent<S_Stats>().life - parent.Stats.dmg;
         parent.target.GetComponent<S_Stats>().LifeUpdate();
 
         sound.Play();
     }
-
+   
     void AttackReset()
     {
 
