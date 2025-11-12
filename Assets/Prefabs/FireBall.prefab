@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6693003242655647439}
   - component: {fileID: 1602971288899845175}
   - component: {fileID: 4915600816725343852}
+  - component: {fileID: 7300779153381823307}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireBall
   projectilesParent: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &874589218642454029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectilesStats
   projectilesParent: {fileID: 0}
-  dmg: 15
+  dmg: 1
+  forceProjectionSpawn: 15
 --- !u!198 &1602971288899845175
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5057,3 +5060,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!50 &7300779153381823307
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260096236505376387}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

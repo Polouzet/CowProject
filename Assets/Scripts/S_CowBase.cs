@@ -9,7 +9,9 @@ public class S_CowBase : MonoBehaviour
 
     public CowAttack attackComponenent;
     public CowMove movementComponent;
+
     public CastSkill skillComponent;
+    public CowSkill cowSkillComponent;
 
     public S_Stats Stats;
     public GameObject target;
@@ -21,6 +23,8 @@ public class S_CowBase : MonoBehaviour
     {
         attackComponenent = GetComponent<CowAttack>();
         movementComponent = GetComponent<CowMove>();
+        skillComponent = GetComponent<CastSkill>();
+        cowSkillComponent = GetComponent<CowSkill>();
 
         Stats = gameObject.GetComponent<S_Stats>();
 

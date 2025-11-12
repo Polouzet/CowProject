@@ -320,11 +320,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_Stats
   life: 5
   dmg: 1
-  speed: 1
+  speed: 3
   attackRange: 1
-  pushForce: 1
-  tauntValue: 0
   attackSpeed: 1
+  tauntValue: 0
   deathparticleprefab: {fileID: 302347874710846716, guid: 520753ac75fed4346b8ca65b3f06bdea, type: 3}
 --- !u!114 &5174486633785270438
 MonoBehaviour:
@@ -339,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CowAttack
   canAttack: 0
+  inRange: 0
   attackCooldown: 1
 --- !u!114 &4631985626378989120
 MonoBehaviour:
@@ -352,7 +352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f046d3de4d17cab4ebaa088f7aaefc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CowMove
+  inMovement: 0
   followDistance: 2
+  canMove: 0
   animator: {fileID: 0}
   cowCapute: {fileID: 0}
 --- !u!114 &3349621513042063684
@@ -369,6 +371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FriendCow
   attackComponenent: {fileID: 0}
   movementComponent: {fileID: 0}
+  skillComponent: {fileID: 0}
+  cowSkillComponent: {fileID: 0}
   Stats: {fileID: 0}
   target: {fileID: 0}
   baseTarget: {fileID: 0}

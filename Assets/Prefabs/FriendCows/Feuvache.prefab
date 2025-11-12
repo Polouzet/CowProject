@@ -50,11 +50,12 @@ GameObject:
   - component: {fileID: 6340463708097308428}
   - component: {fileID: 5174486633785270438}
   - component: {fileID: 4631985626378989120}
+  - component: {fileID: 7265816356388131250}
   - component: {fileID: 3349621513042063684}
   - component: {fileID: 7070197195419325535}
   m_Layer: 0
   m_Name: Component
-  m_TagString: Untagged
+  m_TagString: FireCow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,10 +319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decefe636c78aa9439e56140170fd828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_Stats
-  life: 5
-  dmg: 1
-  speed: 1
-  attackRange: 1
+  life: 2
+  dmg: 2
+  speed: 2
+  attackRange: 4
   attackSpeed: 2
   tauntValue: 0
   deathparticleprefab: {fileID: 302347874710846716, guid: 520753ac75fed4346b8ca65b3f06bdea, type: 3}
@@ -357,6 +358,19 @@ MonoBehaviour:
   canMove: 0
   animator: {fileID: 0}
   cowCapute: {fileID: 0}
+--- !u!114 &7265816356388131250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836701317475400199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d4b7101cd8f744ba213e236ea46bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CastSkill
+  fireCowProj: {fileID: 4260096236505376387, guid: 4c28baf52585d2648b4c117e83fcc5ee, type: 3}
 --- !u!114 &3349621513042063684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +385,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FriendCow
   attackComponenent: {fileID: 0}
   movementComponent: {fileID: 0}
+  skillComponent: {fileID: 0}
+  cowSkillComponent: {fileID: 0}
   Stats: {fileID: 0}
   target: {fileID: 0}
   baseTarget: {fileID: 0}

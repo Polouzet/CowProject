@@ -22,19 +22,19 @@ public class CowAttack : S_CowComponent
     {
         if(parent.target)
         {
-            if (Vector2.Distance(transform.position, parent.target.transform.position) <= parent.Stats.attackRange)
+            if (Vector2.Distance(transform.position, parent.target.transform.position) <= parent.Stats.attackRange && parent.target.tag != "Player")
             {
                 inRange = true;
 
                 if (canAttack && inRange)
                 {
-                    if(parent.Stats.attackRange < 1)
+                    if(parent.Stats.attackRange <= 2)
                     {
                         Attack();
                     }
                     else
                     {
-                        parent.skillComponent?.CastingSkill();
+                        SkillUse();
                     }    
                 }
                 parent.movementComponent.canMove = false;
@@ -67,7 +67,21 @@ public class CowAttack : S_CowComponent
 
         sound.Play();
     }
-   
+    void SkillUse()
+    {
+        if (parent.target.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+        else
+
+            canAttack = false;
+        inRange = true;
+
+        parent.skillComponent?.CastingSkill();
+
+        sound.Play();
+    }
     void AttackReset()
     {
 
