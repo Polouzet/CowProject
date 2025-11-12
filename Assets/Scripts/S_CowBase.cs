@@ -9,6 +9,7 @@ public class S_CowBase : MonoBehaviour
 
     public CowAttack attackComponenent;
     public CowMove movementComponent;
+    public CastSkill skillComponent;
 
     public S_Stats Stats;
     public GameObject target;

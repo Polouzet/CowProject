@@ -28,7 +28,14 @@ public class CowAttack : S_CowComponent
 
                 if (canAttack && inRange)
                 {
-                    Attack();
+                    if(parent.Stats.attackRange < 1)
+                    {
+                        Attack();
+                    }
+                    else
+                    {
+                        parent.skillComponent?.CastingSkill();
+                    }    
                 }
                 parent.movementComponent.canMove = false;
 

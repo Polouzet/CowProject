@@ -7,10 +7,7 @@ public class FriendCow : S_CowBase
     public override void Awake()
     {
         base.Awake();
-
-
         captureComponent = GetComponent<S_CowCapture>();
-
     }
 
     public override void Update()

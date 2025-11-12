@@ -48,7 +48,6 @@ public class S_Detection : S_CowComponent
         {
             var top = vavaches.OrderByDescending(c => c.Stats.tauntValue).First();
 
-                print("Vavaches");
                 parent.baseTarget = top.gameObject;
             
         }
